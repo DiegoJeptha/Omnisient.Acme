@@ -87,6 +87,7 @@ namespace csharp
         private static void Calculate(double change, int country)
         {
             List<int> coins;
+            List<int> sendBack = new List<int>() {};
             // USA
             if (country == 1)
             {
@@ -97,7 +98,7 @@ namespace csharp
                 coins = new List<int>() { 1, 2, 10, 25 };
             }
 
-            List<int> sendBack = new List<int>() { };
+            
             //Converts to cents
             var remainder = (int)Math.Truncate(change * 100);
 
@@ -107,7 +108,7 @@ namespace csharp
             {
                 int coin = coins[i];
                 //removes the decimal when dividing and only equals the whole number
-                var coinTypeAmount = (int)((remainder / coin) * 100) / 100;
+                var coinTypeAmount = (int)(remainder / coin);
                 for (int j = 0; j < coinTypeAmount; j++)
                 {
                     remainder = remainder - coin;
